@@ -3,7 +3,10 @@ import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import Input from '../../ui/input';
 import Button from '../../ui/button';
-import {LoginFormData, loginSchema} from '../../../validations/loginShema';
+import {
+  LoginFormData,
+  loginSchema,
+} from '../../../validations/auth/login/loginShema';
 
 const LoginForm: React.FC = () => {
   const {
