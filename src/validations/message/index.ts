@@ -1,6 +1,7 @@
 import auth from './auth';
+import {ErrorProps} from './type';
 
-const errors = {
+const errors: ErrorProps = {
   auth,
 };
 

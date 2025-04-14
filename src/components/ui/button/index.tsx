@@ -1,6 +1,6 @@
 import React from 'react';
-import {ButtonProps, Variant} from './type';
-import {baseStyles} from './constant';
+import {ButtonProps} from './type';
+import {baseStyles, variants} from './constant';
 
 const Button: React.FC<ButtonProps> = ({
   label,
@@ -12,21 +12,12 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const appliedVariant = variant || 'primary';
 
-  const variants: Record<Variant, string> = {
-    primary: 'bg-blue-600 hover:bg-blue-700',
-    secondary: 'bg-gray-600 hover:bg-gray-700',
-    danger: 'bg-red-600 hover:bg-red-700',
-  };
+  const style = `${baseStyles} ${variants[appliedVariant]} ${
+    disabled ? 'opacity-50 cursor-not-allowed' : ''
+  } ${className}`;
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`${baseStyles} ${variants[appliedVariant]} ${
-        disabled ? 'opacity-50 cursor-not-allowed' : ''
-      } ${className}`}
-    >
+    <button type={type} onClick={onClick} disabled={disabled} className={style}>
       {label}
     </button>
   );
