@@ -19,21 +19,16 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="max-w-sm mx-auto mt-10 space-y-4"
-    >
-      <div>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto mt-5">
+      <div className="flex flex-col space-y-2">
         <Input
           id="email"
-          label="Email"
-          type="email"
+          label="Username or Email Address"
+          type="text"
           placeholder="Enter your email"
           {...register('email')}
           errorMessage={errors.email?.message}
         />
-      </div>
-      <div>
         <Input
           id="password"
           label="Password"
@@ -42,8 +37,16 @@ const LoginForm: React.FC = () => {
           {...register('password')}
           errorMessage={errors.password?.message}
         />
+        <div className="flex gap-2 items-center">
+          <Input label="Remember Me" id="terms" type="checkbox" />
+        </div>
       </div>
-      <Button type="submit" label="Login" variant="primary" />
+      <Button type="submit" label="Login" className="bg-[#193839] mt-5" />
+      <div>
+        <h1 className="text-red-800 border-t-2 border-gray-200 mt-10">
+          Lost Password ?
+        </h1>
+      </div>
     </form>
   );
 };
