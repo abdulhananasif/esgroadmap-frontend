@@ -1,6 +1,8 @@
 import React from 'react';
 import {PackageProp} from './type';
 import {packageList} from './constant';
+import {Link} from 'react-router-dom';
+import Button from '../ui/button';
 
 const Packages: React.FC = () => {
   return (
@@ -52,7 +54,7 @@ const Packages: React.FC = () => {
             {pkg.features.map((feature: string, index: number) => (
               <li
                 key={index}
-                className="flex gap-2 items-center justify-center py-3 border-t-2 border-gray-200"
+                className="flex gap-1 items-center justify-center py-3 px-15 border-t-2 border-gray-200"
               >
                 <img
                   src="/icons/circle-tick.svg"
@@ -63,6 +65,14 @@ const Packages: React.FC = () => {
               </li>
             ))}
           </ul>
+          <Link to="/auth/membership-account/membership-checkout">
+            <Button
+              type="submit"
+              label="Signup"
+              style={{backgroundColor: 'var(--theme-bg)'}}
+              className="mt-5"
+            />
+          </Link>
         </div>
       ))}
     </div>

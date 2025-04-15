@@ -6,7 +6,7 @@ const navItems = [
   {
     id: 1,
     title: 'Sign up',
-    link: '/auth/sign-up',
+    link: '/auth/signup',
     isButton: false,
     className: '',
   },

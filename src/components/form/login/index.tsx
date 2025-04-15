@@ -4,6 +4,7 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import Input from '../../ui/input';
 import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
+import {Link} from 'react-router-dom';
 
 const LoginForm: React.FC = () => {
   const {
@@ -19,7 +20,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto mt-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto my-10">
       <div className="flex flex-col space-y-2">
         <Input
           id="email"
@@ -41,7 +42,10 @@ const LoginForm: React.FC = () => {
           <Input label="Remember Me" id="terms" type="checkbox" />
         </div>
       </div>
-      <Button type="submit" label="Login" className="bg-[#193839] mt-5" />
+      <Link to="/auth/signup">
+        <Button type="submit" label="Login" className="bg-[#193839] mt-5" />
+      </Link>
+
       <div>
         <h1 className="text-red-800 border-t-2 border-gray-200 mt-10">
           Lost Password ?
