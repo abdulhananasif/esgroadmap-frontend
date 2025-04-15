@@ -1,12 +1,14 @@
-// import Login from './pages/login';
+import {useRoutes} from 'react-router-dom';
+import {routesConfig} from './routes';
 
-import SignUp from './pages/signup';
-
+function AppRoutes() {
+  const element = useRoutes(routesConfig);
+  return element;
+}
 function App() {
   return (
     <div>
-      {/* <Login /> */}
-      <SignUp />
+      <AppRoutes />
     </div>
   );
 }
