@@ -1,11 +1,12 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import Input from '../../ui/input';
 import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
+import {Link} from 'react-router-dom';
 
-const LoginForm: React.FC = () => {
+const LoginForm: FunctionComponent = () => {
   const {
     register,
     handleSubmit,
@@ -21,19 +22,18 @@ const LoginForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-sm mx-auto mt-10 space-y-4"
+      className="max-w-sm mx-auto my-5 px-4 sm:px-6"
     >
-      <div>
+      <div className="flex flex-col space-y-4">
         <Input
           id="email"
-          label="Email"
-          type="email"
+          label="Username or Email Address"
+          type="text"
           placeholder="Enter your email"
           {...register('email')}
           errorMessage={errors.email?.message}
+          className="w-full"
         />
-      </div>
-      <div>
         <Input
           id="password"
           label="Password"
@@ -41,9 +41,30 @@ const LoginForm: React.FC = () => {
           placeholder="Enter your password"
           {...register('password')}
           errorMessage={errors.password?.message}
+          className="w-full"
         />
+        <div className="flex gap-2 items-center">
+          <Input
+            label="Remember Me"
+            id="terms"
+            type="checkbox"
+            className="w-auto"
+          />
+        </div>
       </div>
-      <Button type="submit" label="Login" variant="primary" />
+      <Link to="/auth/signup">
+        <Button
+          type="submit"
+          label="Login"
+          className="mt-5 w-full sm:w-auto buttonbg"
+        />
+      </Link>
+
+      <div>
+        <h1 className="texterror border-t-2 bordergray mt-8 font-semibold text-start">
+          Lost Password ?
+        </h1>
+      </div>
     </form>
   );
 };

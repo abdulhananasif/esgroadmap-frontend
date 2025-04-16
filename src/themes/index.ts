@@ -1,15 +1,17 @@
-// src/themes/index.ts
-
 export const lightTheme = {
-  '--primary-color': '#3498db', // blue
-  '--secondary-color': '#2ecc71', // green
-  '--background-color': '#ffffff', // white
-  '--text-color': '#333333', // dark text
+  '--primary-bg': '#F5F5F5',
+  '--secondary-color': '#2ecc71',
+  '--background-color': '#ffffff',
+  '--themetext-color': '#219E98',
+  '--button-bg': '#193839',
+  '--button-bg1': '#06b6d4',
+  '--theme-bg': '#219E98',
+  '--footer-bg': '#000000',
 };
 
 export const darkTheme = {
-  '--primary-color': '#1abc9c', // turquoise
-  '--secondary-color': '#e74c3c', // red
-  '--background-color': '#2c3e50', // dark background
-  '--text-color': '#ecf0f1', // light text
+  '--primary-color': '#1abc9c',
+  '--secondary-color': '#e74c3c',
+  '--background-color': '#2c3e50',
+  '--text-color': '#ecf0f1',
 };

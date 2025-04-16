@@ -1,23 +1,25 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {ButtonProps} from './type';
-import {baseStyles, variants} from './constant';
+import {baseStyles} from './constant';
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FunctionComponent<ButtonProps> = ({
   label,
   onClick,
   type = 'button',
-  variant = 'primary',
   disabled = false,
   className = '',
 }) => {
-  const appliedVariant = variant || 'primary';
-
-  const style = `${baseStyles} ${variants[appliedVariant]} ${
+  const baseStyle = `${baseStyles} ${
     disabled ? 'opacity-50 cursor-not-allowed' : ''
   } ${className}`;
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={style}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={baseStyle}
+    >
       {label}
     </button>
   );
