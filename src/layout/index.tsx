@@ -6,12 +6,12 @@ import {FunctionComponent} from 'react';
 
 const Layout: FunctionComponent<LayoutProps> = ({bannerText, children}) => {
   return (
-    <>
+    <div className="flex flex-col justify-between min-h-screen">
       <Navbar />
       {bannerText && <AuthBanner text={bannerText} />}
       <main>{children}</main>
       <Footer />
-    </>
+    </div>
   );
 };
 
