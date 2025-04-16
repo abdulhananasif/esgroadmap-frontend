@@ -1,4 +1,6 @@
-export const navItems = [
+import {NavItem} from './type';
+
+export const navItems: NavItem[] = [
   {
     id: 1,
     title: 'Sign up',

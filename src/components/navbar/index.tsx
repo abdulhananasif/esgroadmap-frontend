@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import {navItems} from './constant';
 import Logo from '../logo';
 import Button from '../ui/button';
+import {NavItem} from './type';
 
 const Navbar = () => {
   return (
@@ -13,9 +14,9 @@ const Navbar = () => {
 
         <nav className="md:block hidden">
           <ul className="flex items-center gap-4">
-            {navItems.map((item) => {
+            {navItems.map((item: NavItem) => {
               return (
-                <li key={item.id} className={`text-md `}>
+                <li key={item.id} className="text-md">
                   {item.isButton ? (
                     <Button label={item.title} className="buttonbg1" />
                   ) : (

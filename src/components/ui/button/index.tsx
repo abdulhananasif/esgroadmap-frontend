@@ -8,7 +8,6 @@ const Button: FunctionComponent<ButtonProps> = ({
   type = 'button',
   disabled = false,
   className = '',
-  style,
 }) => {
   const baseStyle = `${baseStyles} ${
     disabled ? 'opacity-50 cursor-not-allowed' : ''
@@ -20,7 +19,6 @@ const Button: FunctionComponent<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       className={baseStyle}
-      style={style}
     >
       {label}
     </button>

@@ -6,12 +6,12 @@ import {FunctionComponent} from 'react';
 
 const Layout: FunctionComponent<LayoutProps> = ({bannerText, children}) => {
   return (
-    <div>
+    <>
       <Navbar />
       {bannerText && <AuthBanner text={bannerText} />}
       <main>{children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const Logo1 = () => {
       width={320}
       height={380}
       decoding="async"
-      style={{color: 'transparent'}}
+      className="text-transparent"
       src="/icons/logo1.webp"
     />
   );

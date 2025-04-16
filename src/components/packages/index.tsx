@@ -12,7 +12,6 @@ const Packages: FunctionComponent = () => {
           key={pkg.id}
           className="w-full sm:w-[48%] flex flex-col gap-4 text-center whitebg"
         >
-          {/* Title */}
           <div className="textwhite py-3 px-4 text-xl md:text-2xl font-semibold themebg">
             <span>{pkg.title}</span>
             <span>{' - '}</span>
@@ -54,7 +53,7 @@ const Packages: FunctionComponent = () => {
           </ul>
 
           <Link to="/auth/membership-account/membership-checkout">
-            <Button type="submit" label="Signup" className="mt-5  themebg" />
+            <Button type="submit" label="Signup" className="mt-5 themebg" />
           </Link>
         </div>
       ))}
