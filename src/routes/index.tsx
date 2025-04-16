@@ -2,8 +2,13 @@ import Login from '../pages/login';
 import SignUp from '../pages/signup';
 import Checkout from '../pages/checkout';
 import {RouteObject} from 'react-router-dom';
+import DashboardLayout from '../pages/dashboardlayout';
 
 export const routesConfig: RouteObject[] = [
+  {
+    path: '/',
+    element: <DashboardLayout />,
+  },
   {
     path: '/auth/login',
     element: <Login />,
