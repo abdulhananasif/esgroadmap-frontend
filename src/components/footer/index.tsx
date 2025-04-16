@@ -9,8 +9,8 @@ import {QuickLinkType} from './type';
 const Footer = () => {
   return (
     <footer className="pt-10 pb-5 px-4 md:px-10 footerbg">
-      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-        <div className="flex justify-center md:justify-start">
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+        <div className="flex justify-center lg:justify-start">
           <Logo1 />
         </div>
 
