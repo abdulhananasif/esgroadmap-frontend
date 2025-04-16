@@ -1,4 +1,4 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import Input from '../../ui/input';
@@ -6,7 +6,7 @@ import Button from '../../ui/button';
 import {SignUpFormData, signUpSchema} from '../../../validations/schema/auth';
 import {Link} from 'react-router-dom';
 
-const SignUpForm: React.FC = () => {
+const SignUpForm: FunctionComponent = () => {
   const {
     register,
     handleSubmit,
@@ -20,11 +20,14 @@ const SignUpForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto my-10">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-3xl mx-auto px-4 md:px-10 py-10"
+    >
       <div className="flex flex-col space-y-4">
-        <div className="flex items-baseline gap-5 themetext">
+        <div className="flex flex-col sm:flex-row sm:items-baseline themetext gap-5">
           <h1 className="font-semibold text-2xl">Membership Level</h1>
-          <p className="text-xs">change</p>
+          <p className="text-xs cursor-pointer">Change</p>
         </div>
         <p>
           You have selected the{' '}
@@ -40,13 +43,15 @@ const SignUpForm: React.FC = () => {
           your initial payment, your first payment is Free.
         </p>
       </div>
-      <div className="flex flex-col space-y-4 my-5 py-5 border-y-3 bordergray">
-        <div className="flex items-baseline gap-5 themetext">
+
+      <div className="flex flex-col space-y-4 my-5 py-5 border-y-2 bordergray">
+        <div className="flex flex-col sm:flex-row sm:items-baseline themetext gap-5">
           <h1 className="font-semibold text-2xl">Account Information</h1>
           <Link to="/auth/login" className="text-xs">
             Already have an account? Log in here
           </Link>
         </div>
+
         <Input
           id="username"
           label="Username"
@@ -63,44 +68,63 @@ const SignUpForm: React.FC = () => {
           {...register('password')}
           errorMessage={errors.password?.message}
         />
-
         <Input
-          id="pconfirmPassword"
+          id="confirmPassword"
           label="Confirm Password"
           type="password"
-          placeholder="Enter your password"
+          placeholder="Confirm your password"
           {...register('confirmPassword')}
           errorMessage={errors.confirmPassword?.message}
         />
         <Input
           id="email"
           label="Email Address"
-          type="text"
+          type="email"
           placeholder="Enter your email"
           {...register('email')}
           errorMessage={errors.email?.message}
         />
         <Input
           id="confirmEmail"
-          label="Email Address"
-          type="text"
-          placeholder="Enter your email"
+          label="Confirm Email Address"
+          type="email"
+          placeholder="Confirm your email"
           {...register('confirmEmail')}
           errorMessage={errors.confirmEmail?.message}
         />
       </div>
-      <div className="flex flex-col space-y-2 border-b-2 pb-5 bordergray">
-        <div className="flex items-baseline gap-5 themetext">
+
+      <div className="flex flex-col space-y-4 border-b-2 pb-5 bordergray">
+        <div className="themetext">
           <h1 className="font-semibold text-2xl">Payment Method</h1>
         </div>
-        <div className="flex gap-2 items-center">
-          <Input label="Pay with Stripe" id="terms" type="radio" />
-        </div>
-        <div className="flex gap-2 items-center">
-          <Input label="Pay with PayPal" id="terms" type="radio" />
+        <div className="flex flex-col  gap-4">
+          <div className="flex items-center gap-2">
+            <Input
+              label="Pay with Stripe"
+              id="stripe"
+              type="radio"
+              value="stripe"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <Input
+              label="Pay with PayPal"
+              id="paypal"
+              type="radio"
+              value="paypal"
+            />
+          </div>
         </div>
       </div>
-      <Button type="submit" label="Continue" className="mt-5 buttonbg" />
+
+      <div className="mt-6">
+        <Button
+          type="submit"
+          label="Continue"
+          className="w-full sm:w-auto buttonbg"
+        />
+      </div>
     </form>
   );
 };

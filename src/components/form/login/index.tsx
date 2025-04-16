@@ -20,8 +20,11 @@ const LoginForm: FunctionComponent = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto my-10">
-      <div className="flex flex-col space-y-2">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-sm mx-auto my-10 px-4 sm:px-6"
+    >
+      <div className="flex flex-col space-y-4">
         <Input
           id="email"
           label="Username or Email Address"
@@ -38,18 +41,27 @@ const LoginForm: FunctionComponent = () => {
           {...register('password')}
           errorMessage={errors.password?.message}
         />
-        <div className="flex gap-2 items-center">
-          <Input label="Remember Me" id="terms" type="checkbox" />
-        </div>
-      </div>
-      <Link to="/auth/signup">
-        <Button type="submit" label="Login" className="mt-5 buttonbg" />
-      </Link>
 
-      <div>
-        <h1 className="texterror border-t-2 bordergray mt-10">
-          Lost Password ?
-        </h1>
+        <div className="flex items-center gap-2">
+          <Input label="Remember Me" id="remember" type="checkbox" />
+        </div>
+
+        <Button type="submit" label="Login" className="buttonbg w-full mt-2" />
+
+        <div className="text-center mt-4">
+          <Link to="/auth/signup" className="text-sm textblue hover:underline">
+            Don’t have an account? Sign up
+          </Link>
+        </div>
+
+        <div className="mt-6 border-t bordergray pt-4 text-center">
+          <Link
+            to="/auth/forgot-password"
+            className="text-sm texterror hover:underline"
+          >
+            Lost Password?
+          </Link>
+        </div>
       </div>
     </form>
   );
