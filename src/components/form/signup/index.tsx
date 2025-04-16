@@ -22,10 +22,7 @@ const SignUpForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto my-10">
       <div className="flex flex-col space-y-4">
-        <div
-          style={{color: 'var(--themetext-color)'}}
-          className="flex items-baseline gap-5"
-        >
+        <div className="flex items-baseline gap-5 themetext">
           <h1 className="font-semibold text-2xl">Membership Level</h1>
           <p className="text-xs">change</p>
         </div>
@@ -43,11 +40,8 @@ const SignUpForm: React.FC = () => {
           your initial payment, your first payment is Free.
         </p>
       </div>
-      <div className="flex flex-col space-y-4 my-5 py-5 border-y-3 border-gray-300">
-        <div
-          style={{color: 'var(--themetext-color)'}}
-          className="flex items-baseline gap-5"
-        >
+      <div className="flex flex-col space-y-4 my-5 py-5 border-y-3 bordergray">
+        <div className="flex items-baseline gap-5 themetext">
           <h1 className="font-semibold text-2xl">Account Information</h1>
           <Link to="/auth/login" className="text-xs">
             Already have an account? Log in here
@@ -95,11 +89,8 @@ const SignUpForm: React.FC = () => {
           errorMessage={errors.confirmEmail?.message}
         />
       </div>
-      <div className="flex flex-col space-y-2 border-b-2 pb-5 border-gray-300">
-        <div
-          style={{color: 'var(--themetext-color)'}}
-          className="flex items-baseline gap-5"
-        >
+      <div className="flex flex-col space-y-2 border-b-2 pb-5 bordergray">
+        <div className="flex items-baseline gap-5 themetext">
           <h1 className="font-semibold text-2xl">Payment Method</h1>
         </div>
         <div className="flex gap-2 items-center">
@@ -109,7 +100,7 @@ const SignUpForm: React.FC = () => {
           <Input label="Pay with PayPal" id="terms" type="radio" />
         </div>
       </div>
-      <Button type="submit" label="Continue" className="bg-[#193839] mt-5" />
+      <Button type="submit" label="Continue" className="mt-5 buttonbg" />
     </form>
   );
 };

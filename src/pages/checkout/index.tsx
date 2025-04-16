@@ -1,14 +1,11 @@
-import AuthBanner from '../../components/authBanner';
 import SignUpForm from '../../components/form/signup';
-import Navbar from '../../components/navbar';
+import Layout from '../../layout';
 
 const Checkout = () => {
   return (
-    <div>
-      <Navbar />
-      <AuthBanner text="Membership Checkout" />
+    <Layout bannerText="Membership Checkout">
       <SignUpForm />
-    </div>
+    </Layout>
   );
 };
 

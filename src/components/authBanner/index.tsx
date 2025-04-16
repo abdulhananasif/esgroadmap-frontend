@@ -1,9 +1,10 @@
 import {AuthBannerProps} from './type';
+import {FunctionComponent} from 'react';
 
-const AuthBanner: React.FC<AuthBannerProps> = ({text}) => {
+const AuthBanner: FunctionComponent<AuthBannerProps> = ({text}) => {
   return (
-    <div className="w-full h-[10rem] bg-[#E5ECED] flex items-center justify-center">
-      <h2 className="text-[#219E99] text-[32px] font-semibold">{text}</h2>
+    <div className="w-full h-[10rem] bannerbg flex items-center justify-center">
+      <h2 className=" text-[32px] font-semibold themetext">{text}</h2>
     </div>
   );
 };

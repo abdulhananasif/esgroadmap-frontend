@@ -1,10 +1,5 @@
-import {useRoutes} from 'react-router-dom';
-import {routesConfig} from './routes';
+import {AppRoutes} from './AppRoutes';
 
-function AppRoutes() {
-  const element = useRoutes(routesConfig);
-  return element;
-}
 function App() {
   return (
     <div>

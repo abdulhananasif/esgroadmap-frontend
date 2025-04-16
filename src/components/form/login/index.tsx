@@ -1,4 +1,4 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import Input from '../../ui/input';
@@ -6,7 +6,7 @@ import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
 import {Link} from 'react-router-dom';
 
-const LoginForm: React.FC = () => {
+const LoginForm: FunctionComponent = () => {
   const {
     register,
     handleSubmit,
@@ -43,11 +43,11 @@ const LoginForm: React.FC = () => {
         </div>
       </div>
       <Link to="/auth/signup">
-        <Button type="submit" label="Login" className="bg-[#193839] mt-5" />
+        <Button type="submit" label="Login" className="mt-5 buttonbg" />
       </Link>
 
       <div>
-        <h1 className="text-red-800 border-t-2 border-gray-200 mt-10">
+        <h1 className="texterror border-t-2 bordergray mt-10">
           Lost Password ?
         </h1>
       </div>

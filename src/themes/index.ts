@@ -1,5 +1,3 @@
-// src/themes/index.ts
-
 export const lightTheme = {
   '--primary-bg': '#F5F5F5',
   '--secondary-color': '#2ecc71',
@@ -8,6 +6,7 @@ export const lightTheme = {
   '--button-bg': '#193839',
   '--button-bg1': '#06b6d4',
   '--theme-bg': '#219E98',
+  '--footer-bg': '#000000',
 };
 
 export const darkTheme = {

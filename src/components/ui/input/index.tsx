@@ -12,26 +12,34 @@ const Input: React.FC<InputProps> = ({
   const isRadio = type === 'radio';
   const isPassword = type === 'password';
   const [showPassword, setShowPassword] = useState(false);
-
   const isCheckLike = isCheckbox || isRadio;
 
+  const wrapperClass = `flex flex-col ${
+    !isCheckLike ? 'space-y-1' : 'space-y-0'
+  }`;
+  const innerWrapperClass = `flex ${
+    isCheckLike ? 'items-center gap-2' : 'flex-col'
+  }`;
+  const textInputClass =
+    'w-full px-3 py-2 border bordergray whitebg rounded-md pr-10';
+  const checkRadioInputClass = 'w-4 h-4';
+  const labelClass = isCheckLike
+    ? 'text-sm font-medium'
+    : 'font-medium mb-1 block';
+
   return (
-    <div
-      className={`flex flex-col ${!isCheckLike ? 'space-y-1' : 'space-y-0'}`}
-    >
-      <div
-        className={`flex ${isCheckLike ? 'items-center gap-2' : 'flex-col'}`}
-      >
+    <div className={wrapperClass}>
+      <div className={innerWrapperClass}>
         {isCheckLike ? (
           <>
             <input
               id={id}
               type={type}
-              className="w-4 h-4 accent-[#219E99]"
+              className={checkRadioInputClass}
               {...rest}
             />
             {label && (
-              <label htmlFor={id} className="text-sm font-medium">
+              <label htmlFor={id} className={labelClass}>
                 {label}
               </label>
             )}
@@ -39,7 +47,7 @@ const Input: React.FC<InputProps> = ({
         ) : (
           <>
             {label && id && (
-              <label htmlFor={id} className="font-medium mb-1 block">
+              <label htmlFor={id} className={labelClass}>
                 {label}
               </label>
             )}
@@ -48,13 +56,13 @@ const Input: React.FC<InputProps> = ({
                 id={id}
                 type={isPassword ? (showPassword ? 'text' : 'password') : type}
                 {...rest}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md pr-10"
+                className={textInputClass}
               />
               {isPassword && (
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute right-6 text-gray-600"
+                  className="absolute right-6 textgray"
                 >
                   {showPassword ? (
                     <img

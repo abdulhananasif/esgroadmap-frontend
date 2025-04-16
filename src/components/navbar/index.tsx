@@ -1,22 +1,7 @@
-import Logo from './logo';
 import {Link} from 'react-router-dom';
-import Button from './ui/button';
-
-const navItems = [
-  {
-    id: 1,
-    title: 'Sign up',
-    link: '/auth/signup',
-    isButton: false,
-    className: '',
-  },
-  {
-    id: 2,
-    title: 'Contact Us',
-    isButton: true,
-    link: '/',
-  },
-];
+import {navItems} from './constant';
+import Logo from '../logo';
+import Button from '../ui/button';
 
 const Navbar = () => {
   return (
@@ -32,14 +17,9 @@ const Navbar = () => {
               return (
                 <li key={item.id} className={`text-md `}>
                   {item.isButton ? (
-                    <Button
-                      label={item.title}
-                      style={{
-                        backgroundColor: 'var(--button-bg)',
-                      }}
-                    />
+                    <Button label={item.title} className="buttonbg1" />
                   ) : (
-                    <Link to={item.link} style={{color: 'var(--text-color)'}}>
+                    <Link to={item.link} className="themetext">
                       {item.title}
                     </Link>
                   )}

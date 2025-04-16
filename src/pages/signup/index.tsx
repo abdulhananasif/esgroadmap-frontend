@@ -1,14 +1,11 @@
-import AuthBanner from '../../components/authBanner';
-import Navbar from '../../components/navbar';
+import Layout from '../../layout';
 import Packages from '../../components/packages';
 
 const SignUp = () => {
   return (
-    <div>
-      <Navbar />
-      <AuthBanner text="Sign Up" />
+    <Layout bannerText="Sign Up">
       <Packages />
-    </div>
+    </Layout>
   );
 };
 

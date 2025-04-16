@@ -1,8 +1,8 @@
-import React from 'react';
+import {FunctionComponent} from 'react';
 import {ButtonProps} from './type';
 import {baseStyles} from './constant';
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FunctionComponent<ButtonProps> = ({
   label,
   onClick,
   type = 'button',
