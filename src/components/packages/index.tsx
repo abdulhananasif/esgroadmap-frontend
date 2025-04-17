@@ -15,7 +15,7 @@ const Packages: FunctionComponent = () => {
           <div className="textwhite py-3 px-4 text-xl md:text-2xl font-semibold themebg">
             <span>{pkg.title}</span>
             <span>{' - '}</span>
-            <span>{pkg.acces}</span>
+            <span>{pkg.access}</span>
           </div>
 
           <div className="flex flex-col items-center justify-center text-center">
