@@ -15,13 +15,19 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/dashboard');
+    }
+  }, [location.pathname, navigate]);
+
+  useEffect(() => {
     if (window.innerWidth < 768) {
       setCollapsed(true);
     }
   }, [setCollapsed]);
 
   useEffect(() => {
-    const path = location.pathname.replace('/dashboard', '') || '/dashboard';
+    const path = location.pathname.replace('/', '') || '/';
     setActivePage(path);
   }, [location, setActivePage]);
 
