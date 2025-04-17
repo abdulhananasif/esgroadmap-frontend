@@ -1,11 +1,13 @@
 import {FunctionComponent, useEffect, useState} from 'react';
 import {Layout} from 'antd';
 import Sidebar from '../../components/sidebar';
-import {Outlet} from 'react-router-dom';
+import {DashboardLayoutProps} from './type';
 
 const {Sider, Content} = Layout;
 
-const DashboardLayout: FunctionComponent = () => {
+const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
+  children,
+}) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [activePage, setActivePage] = useState<string>('dashboard');
 
@@ -42,8 +44,8 @@ const DashboardLayout: FunctionComponent = () => {
       </Sider>
 
       <Layout className={`ml-[${collapsed ? '70px' : '280px'}]`}>
-        <Content className="whitebg p-3 h-screen">
-          <Outlet />
+        <Content className="whitebg h-screen">
+          <main>{children}</main>
         </Content>
       </Layout>
     </Layout>

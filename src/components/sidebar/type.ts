@@ -4,3 +4,10 @@ export interface SidebarProps {
   collapsed: boolean;
   setCollapsed: (value: boolean) => void;
 }
+
+export interface SiderItem {
+  id: number;
+  path: string;
+  label: string;
+  icon: string;
+}

@@ -2,13 +2,17 @@ import Login from '../pages/login';
 import SignUp from '../pages/signup';
 import Checkout from '../pages/checkout';
 import {RouteObject} from 'react-router-dom';
-import DashboardLayout from '../pages/dashboardlayout';
 import Dashboard from '../pages/dashboard';
+import CarbonReduction from '../pages/carbonReduction';
 
 export const routesConfig: RouteObject[] = [
   {
-    path: '/',
-    element: <DashboardLayout />,
+    path: '/dashboard',
+    element: <Dashboard />,
+  },
+  {
+    path: '/carbon-reduction',
+    element: <CarbonReduction />,
   },
   {
     path: '/auth/login',
@@ -21,9 +25,5 @@ export const routesConfig: RouteObject[] = [
   {
     path: '/auth/membership-account/membership-checkout',
     element: <Checkout />,
-  },
-  {
-    path: '/auth/dashboard',
-    element: <Dashboard />,
   },
 ];

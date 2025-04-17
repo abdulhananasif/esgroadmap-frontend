@@ -1,8 +1,10 @@
-export const siderItems = [
-  {id: 1, path: '/', label: 'Dashboard', icon: '/icons/dashboard'},
+import {SiderItem} from './type';
+
+export const siderItems: SiderItem[] = [
+  {id: 1, path: '/dashboard', label: 'Dashboard', icon: '/icons/dashboard'},
   {
     id: 2,
-    path: '#',
+    path: '/carbon-reduction',
     label: 'Carbon Reduction',
     icon: '/icons/carbon-reduction',
   },

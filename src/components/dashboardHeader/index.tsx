@@ -1,6 +1,6 @@
 const DashboardHeader = () => {
   return (
-    <div className="whitebg px-10 relative flex items-center justify-between h-[90px]">
+    <div className="whitebg px-10 relative flex items-center justify-between h-20">
       <div className="w-6" />
 
       <div className="absolute left-1/2 -translate-x-1/2 transform">
