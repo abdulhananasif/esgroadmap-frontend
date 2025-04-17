@@ -40,10 +40,19 @@
   border-color: #e5e7eb;
 }
 
+.bordergrayRight {
+  border-radius: 2px;
+  border-right: #566a92;
+}
+
 .borderwhite {
   border-color: #ffffff;
 }
 
 .bannerbg {
   background-color: #e5eced;
+}
+
+.sidebarbg {
+  background-color: rgba(249, 249, 249, 0.7);
 }

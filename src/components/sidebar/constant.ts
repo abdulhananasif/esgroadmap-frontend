@@ -1,15 +1,22 @@
 export const siderItems = [
-  {id: 1, path: '/dashboard', label: 'Dashboard', icon: '/dashboard'},
-  {id: 2, path: '/gateInward', label: 'Gate Inward', icon: '/gateInward'},
-  {id: 3, path: '/inventory', label: 'Inventory', icon: '/inventory'},
+  {id: 1, path: '/', label: 'Dashboard', icon: '/icons/dashboard'},
+  {
+    id: 2,
+    path: '#',
+    label: 'Carbon Reduction',
+    icon: '/icons/carbon-reduction',
+  },
+  {
+    id: 3,
+    path: '#',
+    label: 'Account',
+    icon: '/icons/circle-user',
+  },
   {
     id: 4,
-    path: '/goodsRequision',
-    label: 'Goods Requisition',
-    icon: '/goodsRequision',
+    path: '#',
+    label: 'Support Tickets',
+    icon: '/icons/head-phones',
   },
-  {id: 5, path: '/production', label: 'Production', icon: '/production'},
-  {id: 6, path: '/finishGoods', label: 'Finish Goods', icon: '/finishGoods'},
-  {id: 7, path: '/gateOutward', label: 'Gate Outward', icon: '/gateOutward'},
-  {id: 8, path: '/users', label: 'Users', icon: '/users'},
+  {id: 5, path: '/faqs', label: 'FAQs', icon: '/icons/faqs'},
 ];
