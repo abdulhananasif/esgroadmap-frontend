@@ -7,7 +7,7 @@ import {NavItem} from './type';
 const Navbar = () => {
   return (
     <div className="w-full flex flex-col items-center gap-1 px-5">
-      <div className="flex flex-1 w-full py-5 items-end justify-between">
+      <div className="flex flex-1 w-full py-5 justify-between items-center">
         <Link to={'/'}>
           <Logo />
         </Link>
