@@ -25,15 +25,17 @@ const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const siderWidth = collapsed ? 70 : 310;
+
   return (
-    <Layout className="h-screen overflow-hidden">
+    <Layout className="min-h-screen">
       <Sider
         trigger={null}
         collapsible
         collapsed={collapsed}
-        width={280}
+        width={310}
         collapsedWidth={70}
-        className="fixed left-0 z-[1000] h-full sidebarbg border-r border-gray-200"
+        className="fixed left-0 top-0 h-screen z-[1000] sidebarbg border-r border-gray-200 overflow-hidden"
       >
         <Sidebar
           setActivePage={setActivePage}
@@ -43,8 +45,8 @@ const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
         />
       </Sider>
 
-      <Layout className={`ml-[${collapsed ? '70px' : '280px'}]`}>
-        <Content className="whitebg h-screen">
+      <Layout className={`transition-all duration-300 ml-[${siderWidth}px]`}>
+        <Content className="whitebg h-screen overflow-y-auto">
           <main>{children}</main>
         </Content>
       </Layout>
