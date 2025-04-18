@@ -1,6 +1,6 @@
 import Button from '../ui/button';
 import {dashboardContent} from './constant';
-import {DashboardProp} from './type';
+import {DashboardItem, DashboardProp} from './type';
 
 const DashboardContent = () => {
   return (
@@ -15,7 +15,7 @@ const DashboardContent = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {section.data.map((item) => (
+              {section.data.map((item: DashboardItem) => (
                 <div key={item.id} className="relative rounded overflow-hidden">
                   <img
                     src={item.src}
