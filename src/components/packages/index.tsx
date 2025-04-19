@@ -52,7 +52,10 @@ const Packages: FunctionComponent = () => {
             ))}
           </ul>
 
-          <Link to="/auth/membership-account/membership-checkout">
+          <Link
+            to="/auth/membership-account/membership-checkout"
+            state={{packageData: pkg}}
+          >
             <Button type="submit" label="Signup" className="mt-5 themebg" />
           </Link>
         </div>

@@ -5,6 +5,8 @@ import App from './App.tsx';
 import {ThemeProvider} from './context/ThemeContext.tsx';
 import {BrowserRouter} from 'react-router-dom';
 import {PayPalScriptProvider} from '@paypal/react-paypal-js';
+import {Provider} from 'react-redux';
+import {store} from './store/index.ts';
 
 const initialOptions = {
   clientId:
@@ -19,7 +21,9 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <ThemeProvider>
         <PayPalScriptProvider options={initialOptions}>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </PayPalScriptProvider>
       </ThemeProvider>
     </BrowserRouter>

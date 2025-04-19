@@ -1,32 +1,18 @@
-import {PayPalButtons} from '@paypal/react-paypal-js';
+import {useEffect} from 'react';
 import {AppRoutes} from './AppRoutes';
+import {isAuthenticated} from './utils/auth';
+import {useNavigate} from 'react-router-dom';
 
 const App = () => {
-  return (
-    <div className="App">
-      <h2>PayPal Test</h2>
-      <PayPalButtons
-        createOrder={(data, actions) => {
-          return actions.order.create({
-            intent: 'CAPTURE',
-            purchase_units: [
-              {
-                amount: {
-                  value: '10.00',
-                  currency_code: 'USD',
-                },
-              },
-            ],
-          });
-        }}
-        onApprove={async (data, actions) => {
-          const details = await actions.order?.capture();
-          console.log('Payment Approved!', details);
-        }}
-      />
-      <AppRoutes />
-    </div>
-  );
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/dashboard');
+    } else {
+      navigate('/auth/login');
+    }
+  }, []);
+  return <AppRoutes />;
 };
 
 export default App;
