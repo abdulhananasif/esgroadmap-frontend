@@ -1,12 +1,23 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {useDispatch} from 'react-redux';
+
 import Input from '../../ui/input';
 import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
-import {Link} from 'react-router-dom';
+import {setIsLoggedIn, setRole} from '../../../slice';
+import {isAuthenticated} from '../../../utils/auth';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const LoginForm: FunctionComponent = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -15,10 +26,58 @@ const LoginForm: FunctionComponent = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log('Login Data:', data);
-  };
+  const onSubmit = async (data: LoginFormData) => {
+    const {email, password} = data;
+    setIsLoading(true);
 
+    if (!email || !password) {
+      toast.error('Please fill in all fields.');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/signin`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email, password}),
+      });
+
+      if (response.ok) {
+        const resData = await response.json();
+
+        localStorage.setItem('id', resData.id);
+        localStorage.setItem('username', resData.username);
+        localStorage.setItem('email', resData.email);
+        localStorage.setItem('isActive', resData.isActive);
+        localStorage.setItem('profileImage', resData.profileImage);
+        localStorage.setItem('plan', resData.plan);
+        localStorage.setItem('role', resData.role);
+        localStorage.setItem('stripeId', resData.stripeId);
+
+        dispatch(setIsLoggedIn(true));
+        dispatch(setRole(resData.role));
+
+        toast.success('Sign in successful!');
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 1000);
+      } else {
+        const errorData = await response.json();
+        toast.error(`Sign in failed: ${errorData.error}`);
+      }
+    } catch (err) {
+      toast.error('An error occurred during sign-in.');
+      console.error('Sign-in error:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/dashboard');
+    }
+  }, []);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -52,18 +111,18 @@ const LoginForm: FunctionComponent = () => {
           />
         </div>
       </div>
-      <Link to="/auth/signup">
-        <Button
-          type="submit"
-          label="Login"
-          className="mt-5 w-full sm:w-auto buttonbg"
-        />
-      </Link>
+
+      <Button
+        type="submit"
+        label={isLoading ? 'Logging in...' : 'Login'}
+        className="mt-5 w-full sm:w-auto buttonbg"
+        disabled={isLoading}
+      />
 
       <div>
-        <h1 className="texterror border-t-2 bordergray mt-8 font-semibold text-start">
-          Lost Password ?
-        </h1>
+        <p className="texterror border-t-2 bordergray mt-8 font-semibold text-start">
+          Lost Password?
+        </p>
       </div>
     </form>
   );

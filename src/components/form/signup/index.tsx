@@ -1,12 +1,28 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import Input from '../../ui/input';
 import Button from '../../ui/button';
-import {SignUpFormData, signUpSchema} from '../../../validations/schema/auth';
+import {toast} from 'react-toastify';
 import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+// import {PayPalButtons} from '@paypal/react-paypal-js';
+import {useLocation} from 'react-router-dom';
+import {setIsLoggedIn, setRole} from '../../../slice';
+import {useDispatch} from 'react-redux';
+import {SignUpFormData, signUpSchema} from '../../../validations/schema/auth';
+import {isAuthenticated} from '../../../utils/auth';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const SignUpForm: FunctionComponent = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  // const [enablePayment, setEnablePayment] = useState(false);
+  const location = useLocation();
+  const {packageData} = location.state || {};
+
   const {
     register,
     handleSubmit,
@@ -14,11 +30,58 @@ const SignUpForm: FunctionComponent = () => {
   } = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
   });
+  const onSubmit = async (data: SignUpFormData) => {
+    const {username, email, confirmEmail, password, confirmPassword} = data;
+    setIsLoading(true);
 
-  const onSubmit = (data: SignUpFormData) => {
-    console.log('Signup Data:', data);
+    if (!username || !email || !confirmEmail || !password || !confirmPassword) {
+      toast.error('Please fill in all fields.');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/signup`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, email, password}),
+      });
+
+      if (response.ok) {
+        const resData = await response.json();
+
+        localStorage.setItem('id', resData.id);
+        localStorage.setItem('username', resData.username);
+        localStorage.setItem('email', resData.email);
+        localStorage.setItem('isActive', resData.isActive);
+        localStorage.setItem('profileImage', resData.profileImage);
+        localStorage.setItem('plan', resData.plan);
+        localStorage.setItem('role', resData.role);
+        localStorage.setItem('stripeId', resData.stripeId);
+
+        dispatch(setIsLoggedIn(true));
+        dispatch(setRole(resData.role));
+
+        toast.success('Sign in successful!');
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 1000);
+      } else {
+        const errorData = await response.json();
+        toast.error(`Sign in failed: ${errorData.error}`);
+      }
+    } catch (err) {
+      toast.error('An error occurred during sign-in.');
+      console.error('Sign-in error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/dashboard');
+    }
+  }, []);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -31,16 +94,16 @@ const SignUpForm: FunctionComponent = () => {
         </div>
         <p>
           You have selected the{' '}
-          <span className="font-bold">
-            Comprehensive account Analysts' club
-          </span>{' '}
-          membership level.
+          <span className="font-bold">{packageData.title}</span> membership
+          level.
         </p>
-        <p>Comprehensive account Analysts' club PLAN</p>
+        <p>{packageData.access}</p>
         <p>
-          The price for membership <span className="font-bold">$0.00</span> now
-          and then <span className="font-bold">$20.00 per Month.</span> After
-          your initial payment, your first payment is Free.
+          The price for membership{' '}
+          <span className="font-bold">
+            {packageData.currency}
+            {packageData.amount}
+          </span>
         </p>
       </div>
 
@@ -98,13 +161,14 @@ const SignUpForm: FunctionComponent = () => {
         <div className="themetext">
           <h1 className="font-semibold text-2xl">Payment Method</h1>
         </div>
-        <div className="flex flex-col  gap-4">
+        <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <Input
               label="Pay with Stripe"
               id="stripe"
               type="radio"
               value="stripe"
+              {...register('paymentMethod')}
             />
           </div>
           <div className="flex items-center gap-2">
@@ -113,18 +177,42 @@ const SignUpForm: FunctionComponent = () => {
               id="paypal"
               type="radio"
               value="paypal"
+              defaultChecked
+              {...register('paymentMethod')}
             />
           </div>
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="my-6">
         <Button
           type="submit"
           label="Continue"
           className="w-full sm:w-auto buttonbg"
+          disabled={isLoading}
         />
       </div>
+      {/* {enablePayment ? (
+        <PayPalButtons
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              intent: 'CAPTURE',
+              purchase_units: [
+                {
+                  amount: {
+                    value: '10.00',
+                    currency_code: 'USD',
+                  },
+                },
+              ],
+            });
+          }}
+          onApprove={async (data, actions) => {
+            const details = await actions.order?.capture();
+            console.log('Payment Approved!', details);
+          }}
+        />
+      ) : null} */}
     </form>
   );
 };

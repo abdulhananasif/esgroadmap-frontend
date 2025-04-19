@@ -15,7 +15,7 @@ const Packages: FunctionComponent = () => {
           <div className="textwhite py-3 px-4 text-xl md:text-2xl font-semibold themebg">
             <span>{pkg.title}</span>
             <span>{' - '}</span>
-            <span>{pkg.acces}</span>
+            <span>{pkg.access}</span>
           </div>
 
           <div className="flex flex-col items-center justify-center text-center">
@@ -52,7 +52,10 @@ const Packages: FunctionComponent = () => {
             ))}
           </ul>
 
-          <Link to="/auth/membership-account/membership-checkout">
+          <Link
+            to="/auth/membership-account/membership-checkout"
+            state={{packageData: pkg}}
+          >
             <Button type="submit" label="Signup" className="mt-5 themebg" />
           </Link>
         </div>
