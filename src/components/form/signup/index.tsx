@@ -64,7 +64,7 @@ const SignUpForm: FunctionComponent = () => {
 
         toast.success('Sign in successful!');
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/auth/login');
         }, 1000);
       } else {
         const errorData = await response.json();
