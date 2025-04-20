@@ -1,9 +1,9 @@
 export type PackageProp = {
   id: number;
   title: string;
-  acces: string;
+  access: string;
   amount: string;
-  currency?: string;
+  currency: string;
   duration: string;
   features: string[];
 };

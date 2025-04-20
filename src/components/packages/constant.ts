@@ -4,7 +4,7 @@ export const packageList: PackageProp[] = [
   {
     id: 1,
     title: 'Free account',
-    acces: 'Access to Carbon Goals',
+    access: 'Access to Carbon Goals',
     amount: '0',
     currency: '$',
     duration: 'Monthly',
@@ -18,7 +18,7 @@ export const packageList: PackageProp[] = [
   {
     id: 2,
     title: 'Comprehensive account',
-    acces: 'Launch offer, including 1 month free trial !',
+    access: 'Launch offer, including 1 month free trial !',
     amount: '20',
     currency: '$',
     duration: 'Monthly',

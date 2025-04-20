@@ -4,12 +4,27 @@ import './index.css';
 import App from './App.tsx';
 import {ThemeProvider} from './context/ThemeContext.tsx';
 import {BrowserRouter} from 'react-router-dom';
+import {PayPalScriptProvider} from '@paypal/react-paypal-js';
+import {Provider} from 'react-redux';
+import {store} from './store/index.ts';
+
+const initialOptions = {
+  clientId:
+    'AfSIwLjDZbTMzjbO4SC8gkavaGJ9OaEavjTYrZd1kW-y_ZDmltiRD6ER5eIGPK7TNn7UWGCVpue0Xh7d',
+  currency: 'USD',
+  intent: 'capture',
+  components: 'buttons',
+};
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <PayPalScriptProvider options={initialOptions}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </PayPalScriptProvider>
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode>
