@@ -9,3 +9,8 @@ export type TableRowType = {
   sectorName: string;
   uploadDate: string;
 };
+
+export type TableProps = {
+  currentData: TableRowType[];
+  tableHeaders: string[];
+};
