@@ -63,7 +63,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
 
   return (
     <div className="sidebarbg min-h-full w-full font-customFont">
-      <div className="flex items-center justify-between px-5 py-5">
+      <div className="flex items-center justify-between mx-8 my-9 sm:my-7">
         {!collapsed && <Logo />}
         <Button
           type="text"
@@ -73,11 +73,13 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
         />
       </div>
 
-      <div className="mt-2 text-start text-base">
+      <div className="pt-2 text-start text-lg">
         {siderItems.map(({path, label, icon}) => {
           const isActive = location.pathname === path;
           const itemClass = `flex items-center cursor-pointer transition-all duration-300 ${
-            collapsed ? 'justify-center px-0 py-2.5' : 'px-7 py-3 justify-start'
+            collapsed
+              ? 'justify-center px-0 py-2.5'
+              : 'px-7 py-2.5 justify-start'
           } ${isActive ? 'themebg textwhite' : ''}`;
 
           return (
@@ -87,7 +89,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
               onClick={() => navigate(path)}
             >
               {renderIcon(path, icon, label)}
-              {!collapsed && <span className="flex-1 ml-3">{label}</span>}
+              {!collapsed && <span className="flex-1 ml-4">{label}</span>}
             </div>
           );
         })}
@@ -101,7 +103,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
             alt="Logout Icon"
             className="w-5 h-5 mr-0 ml-1"
           />
-          {!collapsed && <span className="flex-1 ml-3">Logout</span>}
+          {!collapsed && <span className="flex-1 ml-4">Logout</span>}
         </div>
       </div>
     </div>
