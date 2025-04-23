@@ -73,13 +73,11 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
         />
       </div>
 
-      <div className="mt-2 text-start text-md">
+      <div className="mt-2 text-start text-base">
         {siderItems.map(({path, label, icon}) => {
           const isActive = location.pathname === path;
           const itemClass = `flex items-center cursor-pointer transition-all duration-300 ${
-            collapsed
-              ? 'justify-center px-0 py-2.5'
-              : 'px-6 py-2.5 justify-start'
+            collapsed ? 'justify-center px-0 py-2.5' : 'px-7 py-3 justify-start'
           } ${isActive ? 'themebg textwhite' : ''}`;
 
           return (
@@ -101,7 +99,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
           <img
             src="/icons/logout.svg"
             alt="Logout Icon"
-            className="w-5 h-5 mr-0"
+            className="w-5 h-5 mr-0 ml-1"
           />
           {!collapsed && <span className="flex-1 ml-3">Logout</span>}
         </div>

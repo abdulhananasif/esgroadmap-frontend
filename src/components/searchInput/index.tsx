@@ -11,7 +11,7 @@ const SearchInput: FunctionComponent<SearchInputProps> = ({
       <input
         type="text"
         placeholder="Keyword search"
-        className="placeholder:font-bold text-sm outline-none w-full"
+        className="placeholder:font-semibold text-lg outline-none w-full"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
