@@ -11,6 +11,6 @@ export type TableRowType = {
 };
 
 export type TableProps = {
-  currentData: TableRowType[];
+  currentData: any[];
   tableHeaders: string[];
 };

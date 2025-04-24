@@ -1,5 +1,9 @@
+import {Dispatch, SetStateAction} from 'react';
+
 export interface PaginationProps {
-  handlePageChange: (value: number) => void;
-  currentPage: number;
-  pageCount: number;
+  data?: any;
+  itemsPerPage?: number;
+  totalPages?: number;
+  currentPage?: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
