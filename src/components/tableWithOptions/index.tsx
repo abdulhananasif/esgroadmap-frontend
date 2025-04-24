@@ -23,7 +23,7 @@ const TableWithOptions = () => {
     setCurrentPage(page);
   };
   return (
-    <div className="border-3 border-gray-200 tablebg rounded-lg mx-3">
+    <div className="border-3 bordergray tablebg rounded-lg mx-3">
       <TableHeader search={search} setSearch={setSearch} />
       <Table currentData={currentData} tableHeaders={tableHeaders} />
       <Pagination

@@ -63,7 +63,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
 
   return (
     <div className="sidebarbg min-h-full w-full font-customFont">
-      <div className="flex items-center justify-between mx-8 my-9 sm:my-7">
+      <div className="flex items-center justify-between mx-8 mt-9 mb-6 ">
         {!collapsed && <Logo />}
         <Button
           type="text"
@@ -73,13 +73,11 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
         />
       </div>
 
-      <div className="pt-2 text-start text-lg">
+      <div className="text-start text-lg md:text-base">
         {siderItems.map(({path, label, icon}) => {
           const isActive = location.pathname === path;
           const itemClass = `flex items-center cursor-pointer transition-all duration-300 ${
-            collapsed
-              ? 'justify-center px-0 py-2.5'
-              : 'px-7 py-2.5 justify-start'
+            collapsed ? 'justify-center px-0 py-2.5' : 'px-7 py-3 justify-start'
           } ${isActive ? 'themebg textwhite' : ''}`;
 
           return (

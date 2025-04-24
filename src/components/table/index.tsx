@@ -2,18 +2,18 @@ import {TableProps} from '../../pages/carbonReduction/type';
 
 const Table = ({currentData, tableHeaders}: TableProps) => {
   return (
-    <div className="w-full overflow-x-auto">
-      <div className="xs:h-[515px] h-full overflow-y-auto">
-        <table className="min-w-[768px] sm:min-w-full table-auto border-collapse">
-          <thead className="bg-gray-100 text-xs sm:text-sm sticky top-0 z-10">
+    <div className="w-full flex-1">
+      <div className="overflow-y-auto max-h-[calc(97vh-200px)]">
+        <table className="w-full table-auto border-collapse">
+          <thead className="bannerbg text-xs sm:text-sm sticky top-0 z-10">
             <tr>
               {tableHeaders.map((header: string, idx: number) => (
                 <th
                   key={idx}
-                  className="font-semibold border border-gray-200 bg-white text-gray-600 px-2 py-2"
+                  className="font-semibold tablebg textgray text-[10px] sm:text-sm min-w-[100px]"
                 >
-                  <div className="flex items-center justify-between w-full">
-                    <span className="break-words whitespace-normal block text-center mx-auto text-xs sm:text-sm w-full">
+                  <div className="flex items-center gap-1 border bordergray px-1 py-2 sm:px-2 sm:py-3 justify-between sm:justify-center w-full cursor-pointer">
+                    <span className="break-words whitespace-normal text-center mx-auto w-full text-[10px] sm:text-sm">
                       {header}
                     </span>
                     {[
@@ -29,7 +29,7 @@ const Table = ({currentData, tableHeaders}: TableProps) => {
                       <img
                         src="/icons/filters.svg"
                         alt="Filter icon"
-                        className="w-3.5 h-3.5 ml-1 sm:w-4 sm:h-4"
+                        className="w-3 h-3 sm:w-4 sm:h-4"
                       />
                     )}
                   </div>
@@ -46,7 +46,7 @@ const Table = ({currentData, tableHeaders}: TableProps) => {
                   <img
                     src="/icons/share.svg"
                     alt="Share"
-                    className="h-5 w-5 mx-auto"
+                    className="h-6 w-6 mx-auto"
                   />
                 </a>,
                 row.targetSentence.length > 15
@@ -65,13 +65,13 @@ const Table = ({currentData, tableHeaders}: TableProps) => {
                 <tr
                   key={row.id}
                   className={`${
-                    index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                  } border border-gray-200 text-xs sm:text-base text-gray-600`}
+                    index % 2 === 0 ? 'whitebg' : 'bg-gray-50'
+                  } border bordergray text-xs sm:text-sm textgray`}
                 >
                   {rowValues.map((value, i) => (
                     <td
                       key={i}
-                      className="px-2 sm:px-4 py-2 sm:py-5 text-center border border-gray-200 min-w-[120px] whitespace-nowrap"
+                      className="px-2 sm:px-4 sm:py-4 md:py-4 py-2 text-center border bordergray break-words whitespace-normal"
                     >
                       {value}
                     </td>
