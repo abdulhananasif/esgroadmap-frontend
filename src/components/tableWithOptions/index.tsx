@@ -1,27 +1,26 @@
 import TableHeader from '../tableHeader';
 import Table from '../table';
 import {useState} from 'react';
-import {tableHeaders} from '../../pages/carbonReduction/constant';
 import Pagination from '../pagination';
+import {TableWithOptionsProps} from './type';
 
-const TableWithOptions = ({carbonData}: {carbonData: any}) => {
+const TableWithOptions = ({data, dataKey}: TableWithOptionsProps) => {
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState<number>(1);
-  return (
+  return data ? (
     <div className="border-3 bordergray tablebg rounded-lg mx-3">
       <TableHeader search={search} setSearch={setSearch} />
       <div className="overflow-y-auto max-h-[calc(97vh-200px)]">
-        <Table
-          currentData={carbonData.carbonSentence}
-          tableHeaders={tableHeaders}
-        />
+        <Table data={data[dataKey]} />
         <Pagination
-          totalPages={carbonData.totalPages}
+          totalPages={data.totalPages}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
       </div>
     </div>
+  ) : (
+    <p>No data</p>
   );
 };
 

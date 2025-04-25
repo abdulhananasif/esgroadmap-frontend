@@ -10,7 +10,19 @@ export type TableRowType = {
   uploadDate: string;
 };
 
-export type TableProps = {
-  currentData: any[];
-  tableHeaders: string[];
+export type CarbonReductionDataType = {
+  totalPages: number;
+  carbonSentence: CarbonSentenceType[];
+};
+
+export type CarbonSentenceType = {
+  Company: string;
+  Country: string;
+  DocURL: string;
+  SectorCode1: string;
+  SectorName1: string;
+  SentenceTargetYear: string;
+  Target_sentence: string;
+  id: number;
+  upload_date: string;
 };

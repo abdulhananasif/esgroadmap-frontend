@@ -1,6 +1,7 @@
-import {TableProps} from '../../pages/carbonReduction/type';
+import {tableHeaders} from './constants';
+import {TableProps} from './type';
 
-const Table = ({currentData = [], tableHeaders}: TableProps) => {
+const Table = ({data}: TableProps) => {
   return (
     <table className="w-full table-auto border-collapse">
       <thead className="bannerbg text-xs sm:text-sm sticky top-0 z-10">
@@ -27,7 +28,7 @@ const Table = ({currentData = [], tableHeaders}: TableProps) => {
         </tr>
       </thead>
       <tbody>
-        {currentData.map((row, index) => {
+        {data.map((row, index) => {
           const rowValues = [
             row.id,
             row.Company,
