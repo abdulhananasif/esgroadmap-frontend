@@ -27,7 +27,7 @@ const GenderDiversity = () => {
       {genderDiversityData && (
         <TableWithOptions
           data={genderDiversityData}
-          dataKey="carbonSentence"
+          dataKey="genderSentence"
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />

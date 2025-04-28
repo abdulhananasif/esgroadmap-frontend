@@ -12,9 +12,12 @@ const Table = ({data}: TableProps) => {
     setIsTargetSentenceOpen(true);
   };
 
-  // Conditional check for data availability
   if (!data || data.length === 0) {
-    return <p>No data available</p>; // Optionally handle empty data state
+    return (
+      <div className=" place-items-center my-10">
+        <p>No data available</p>
+      </div>
+    );
   }
 
   return (

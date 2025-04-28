@@ -27,7 +27,7 @@ const WaterManagement = () => {
       {waterManagementData && (
         <TableWithOptions
           data={waterManagementData}
-          dataKey="carbonSentence"
+          dataKey="waterSentence"
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />

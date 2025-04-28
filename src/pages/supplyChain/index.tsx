@@ -27,7 +27,7 @@ const SupplyChain = () => {
       {supplyChainData && (
         <TableWithOptions
           data={supplyChainData}
-          dataKey="carbonSentence"
+          dataKey="supplyChain"
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />

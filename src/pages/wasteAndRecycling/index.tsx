@@ -9,7 +9,6 @@ const WasteAndRecycling = () => {
   const [wasteAndRecyclingData, setWasteAndRecyclingData] =
     useState<WasteAndRecyclingDataType | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
-
   const fetchWasteAndRecyclingData = async (page: number) => {
     const res = await axios.get(
       `https://esgroadmap-backend.vercel.app/api/v1/tool/wasteAndRecycling?page=${page}&limit=10`
@@ -27,7 +26,7 @@ const WasteAndRecycling = () => {
       {wasteAndRecyclingData && (
         <TableWithOptions
           data={wasteAndRecyclingData}
-          dataKey="carbonSentence"
+          dataKey="wasteSentence"
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />

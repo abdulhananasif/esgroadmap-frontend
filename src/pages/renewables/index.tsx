@@ -27,7 +27,7 @@ const Renewables = () => {
       {renewablesData && (
         <TableWithOptions
           data={renewablesData}
-          dataKey="carbonSentence"
+          dataKey="renewablesSentence"
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
