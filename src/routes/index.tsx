@@ -19,26 +19,26 @@ export const routesConfig: RouteObject[] = [
     path: '/carbon-reduction',
     element: <CarbonReduction />,
   },
-  {
-    path: '/waste-and-recycling',
-    element: <WasteAndRecycling />,
-  },
-  {
-    path: '/water-management',
-    element: <WaterManagement />,
-  },
-  {
-    path: '/gender-diversity',
-    element: <GenderDiversity />,
-  },
-  {
-    path: '/supply-chain',
-    element: <SupplyChain />,
-  },
-  {
-    path: '/renewables',
-    element: <Renewables />,
-  },
+  // {
+  //   path: '/waste-and-recycling',
+  //   element: <WasteAndRecycling />,
+  // },
+  // {
+  //   path: '/water-management',
+  //   element: <WaterManagement />,
+  // },
+  // {
+  //   path: '/gender-diversity',
+  //   element: <GenderDiversity />,
+  // },
+  // {
+  //   path: '/supply-chain',
+  //   element: <SupplyChain />,
+  // },
+  // {
+  //   path: '/renewables',
+  //   element: <Renewables />,
+  // },
   {
     path: '/auth/login',
     element: <Login />,
