@@ -5,6 +5,7 @@ import Logo from '../logo';
 import {SidebarProps} from './type';
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
+import {toast} from 'react-toastify';
 
 const Sidebar: FunctionComponent<SidebarProps> = ({
   setActivePage,
@@ -38,7 +39,19 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   };
 
   const handleLogout = () => {
-    navigate('/auth/login');
+    localStorage.removeItem('id');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    localStorage.removeItem('isActive');
+    localStorage.removeItem('profileImage');
+    localStorage.removeItem('plan');
+    localStorage.removeItem('role');
+    localStorage.removeItem('stripeId');
+
+    toast.success('Sign in successful!');
+    setTimeout(() => {
+      navigate('/auth/login');
+    }, 1000);
   };
 
   const toggleIcon = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />;
