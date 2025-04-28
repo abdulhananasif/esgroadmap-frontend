@@ -25,7 +25,7 @@ const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const siderWidth = collapsed ? 70 : 310;
+  const siderWidth = collapsed ? 70 : 315;
 
   return (
     <Layout className="min-h-screen">
@@ -33,7 +33,7 @@ const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
         trigger={null}
         collapsible
         collapsed={collapsed}
-        width={310}
+        width={315}
         collapsedWidth={70}
         className="fixed left-0 top-0 h-screen z-[1000] sidebarbg border-r border-gray-200 overflow-hidden"
       >
@@ -47,7 +47,7 @@ const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
 
       <Layout className={`transition-all duration-300 ml-[${siderWidth}px]`}>
         <Content className="whitebg h-screen overflow-y-auto">
-          <main>{children}</main>
+          {children}
         </Content>
       </Layout>
     </Layout>
