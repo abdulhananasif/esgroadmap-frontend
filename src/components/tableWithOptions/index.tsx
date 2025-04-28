@@ -12,12 +12,12 @@ const TableWithOptions = ({data, dataKey}: TableWithOptionsProps) => {
       <TableHeader search={search} setSearch={setSearch} />
       <div className="overflow-y-auto max-h-[calc(97vh-200px)]">
         <Table data={data[dataKey]} />
-        <Pagination
-          totalPages={data.totalPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
       </div>
+      <Pagination
+        totalPages={data.totalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   ) : (
     <p>No data</p>
