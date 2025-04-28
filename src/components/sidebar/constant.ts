@@ -16,7 +16,7 @@ export const siderItems: SiderItem[] = [
   },
   {
     id: 4,
-    path: '#',
+    path: '/support-tickets',
     label: 'Support Tickets',
     icon: '/icons/head-phones',
   },
