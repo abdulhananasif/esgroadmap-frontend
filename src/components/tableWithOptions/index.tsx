@@ -1,12 +1,17 @@
 import TableHeader from '../tableHeader';
 import Table from '../table';
-import {useState} from 'react';
 import Pagination from '../pagination';
 import {TableWithOptionsProps} from './type';
+import {useState} from 'react';
 
-const TableWithOptions = ({data, dataKey}: TableWithOptionsProps) => {
+const TableWithOptions = ({
+  data,
+  dataKey,
+  currentPage,
+  setCurrentPage,
+}: TableWithOptionsProps) => {
   const [search, setSearch] = useState('');
-  const [currentPage, setCurrentPage] = useState<number>(1);
+
   return data ? (
     <div className="border-3 bordergray tablebg rounded-lg mx-3">
       <TableHeader search={search} setSearch={setSearch} />
