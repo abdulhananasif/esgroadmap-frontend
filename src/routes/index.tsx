@@ -4,11 +4,6 @@ import Checkout from '../pages/checkout';
 import {RouteObject} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import CarbonReduction from '../pages/carbonReduction';
-import WasteAndRecycling from '../pages/wasteAndRecycling';
-import WaterManagement from '../pages/waterManagement';
-import GenderDiversity from '../pages/genderDiversity';
-import SupplyChain from '../pages/supplyChain';
-import Renewables from '../pages/renewables';
 
 export const routesConfig: RouteObject[] = [
   {
