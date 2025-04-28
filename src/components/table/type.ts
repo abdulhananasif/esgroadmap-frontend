@@ -1,5 +1,5 @@
-import {CarbonSentenceType} from '../../pages/carbonReduction/type';
+import {SentenceType} from '../../types/data';
 
 export type TableProps = {
-  data: CarbonSentenceType[];
+  data: SentenceType[];
 };

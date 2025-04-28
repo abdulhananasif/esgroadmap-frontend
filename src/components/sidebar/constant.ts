@@ -10,15 +10,45 @@ export const siderItems: SiderItem[] = [
   },
   {
     id: 3,
+    path: '/waste-and-recycling',
+    label: 'Waste and Recycling',
+    icon: '/icons/carbon-reduction',
+  },
+  {
+    id: 4,
+    path: '/water-management',
+    label: 'Water Management',
+    icon: '/icons/carbon-reduction',
+  },
+  {
+    id: 5,
+    path: '/gender-diversity',
+    label: 'Gender Diversity',
+    icon: '/icons/carbon-reduction',
+  },
+  {
+    id: 4,
+    path: '/supply-chain',
+    label: 'Supply Chain',
+    icon: '/icons/carbon-reduction',
+  },
+  {
+    id: 5,
+    path: '/renewables',
+    label: 'Renewables',
+    icon: '/icons/carbon-reduction',
+  },
+  {
+    id: 6,
     path: '#',
     label: 'Account',
     icon: '/icons/circle-user',
   },
   {
-    id: 4,
+    id: 7,
     path: '#',
     label: 'Support Tickets',
     icon: '/icons/head-phones',
   },
-  {id: 5, path: '/faqs', label: 'FAQs', icon: '/icons/faqs'},
+  {id: 8, path: '/faqs', label: 'FAQs', icon: '/icons/faqs'},
 ];

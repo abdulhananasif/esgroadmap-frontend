@@ -2,7 +2,7 @@ import {FunctionComponent, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {siderItems} from './constant';
 import Logo from '../logo';
-import {SidebarProps} from './type';
+import {SidebarProps, SiderItem} from './type';
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
 
@@ -74,7 +74,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
       </div>
 
       <div className="text-start text-lg md:text-base">
-        {siderItems.map(({path, label, icon}) => {
+        {siderItems.map(({path, label, icon}: SiderItem) => {
           const isActive = location.pathname === path;
           const itemClass = `flex items-center cursor-pointer transition-all duration-300 ${
             collapsed ? 'justify-center px-0 py-2.5' : 'px-7 py-3 justify-start'
@@ -82,7 +82,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
 
           return (
             <div
-              key={path}
+              key={label}
               className={itemClass}
               onClick={() => navigate(path)}
             >
