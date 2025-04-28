@@ -11,6 +11,12 @@ const Table = ({data}: TableProps) => {
     setSelectedTargetSentence(sentence);
     setIsTargetSentenceOpen(true);
   };
+
+  // Conditional check for data availability
+  if (!data || data.length === 0) {
+    return <p>No data available</p>; // Optionally handle empty data state
+  }
+
   return (
     <>
       <table className="w-full table-auto border-collapse">
@@ -39,6 +45,22 @@ const Table = ({data}: TableProps) => {
         </thead>
         <tbody>
           {data.map((row, index) => {
+            if (
+              !(
+                'id' in row &&
+                'Company' in row &&
+                'DocURL' in row &&
+                'Target_sentence' in row &&
+                'SentenceTargetYear' in row &&
+                'Country' in row &&
+                'SectorCode1' in row &&
+                'SectorName1' in row &&
+                'upload_date' in row
+              )
+            ) {
+              return null;
+            }
+
             const rowValues = [
               row.id,
               row.Company,
@@ -51,7 +73,7 @@ const Table = ({data}: TableProps) => {
               </a>,
               <div
                 onClick={() => handleTargetSentenceClick(row.Target_sentence)}
-                className="cursor-pointer"
+                className="cursor-point"
               >
                 {row.Target_sentence.length > 15
                   ? `${row.Target_sentence.slice(0, 15)}...`
@@ -89,7 +111,7 @@ const Table = ({data}: TableProps) => {
       <Modal
         isOpen={isTargetSentenceOpen}
         onClose={() => setIsTargetSentenceOpen(false)}
-        // title="Full Target Sentence"
+        title="Full Target Sentence"
       >
         <p className="text-gray-700 text-center">{selectedTargetSentence}</p>
       </Modal>
