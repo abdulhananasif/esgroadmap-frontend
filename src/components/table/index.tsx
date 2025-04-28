@@ -1,4 +1,4 @@
-import {tableHeaders} from './constants';
+import {tableHeaders} from '../../pages/carbonReduction/constant';
 import {TableProps} from './type';
 
 const Table = ({data}: TableProps) => {

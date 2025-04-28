@@ -19,7 +19,7 @@ export const tableHeaders = [
   'Target Sentence',
   'Target Year(s)',
   'Country',
-  'sector code #1',
-  'sector name #1 (NAICS)',
+  'Sector code #1',
+  'Sector name #1',
   'Upload Date',
 ];
