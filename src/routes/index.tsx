@@ -5,7 +5,6 @@ import {RouteObject} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import CarbonReduction from '../pages/carbonReduction';
 import SupportTicket from '../pages/supportTicket';
-import NewSupportTicket from '../pages/newSupportTicket';
 
 export const routesConfig: RouteObject[] = [
   {
@@ -31,9 +30,5 @@ export const routesConfig: RouteObject[] = [
   {
     path: '/support-tickets',
     element: <SupportTicket />,
-  },
-  {
-    path: '/new-ticket',
-    element: <NewSupportTicket />,
   },
 ];
