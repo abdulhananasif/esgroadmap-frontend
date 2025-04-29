@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 // import {PayPalButtons} from '@paypal/react-paypal-js';
 import {useLocation} from 'react-router-dom';
-import {setIsLoggedIn, setRole} from '../../../slice';
+import {setIsLoggedIn} from '../../../slice';
 import {useDispatch} from 'react-redux';
 import {SignUpFormData, signUpSchema} from '../../../validations/schema/auth';
 import {isAuthenticated} from '../../../utils/auth';
@@ -48,19 +48,9 @@ const SignUpForm: FunctionComponent = () => {
       });
 
       if (response.ok) {
-        const resData = await response.json();
-
-        localStorage.setItem('id', resData.id);
-        localStorage.setItem('username', resData.username);
-        localStorage.setItem('email', resData.email);
-        localStorage.setItem('isActive', resData.isActive);
-        localStorage.setItem('profileImage', resData.profileImage);
-        localStorage.setItem('plan', resData.plan);
-        localStorage.setItem('role', resData.role);
-        localStorage.setItem('stripeId', resData.stripeId);
+        await response.json();
 
         dispatch(setIsLoggedIn(true));
-        dispatch(setRole(resData.role));
 
         toast.success('Sign in successful!');
         setTimeout(() => {

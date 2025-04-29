@@ -5,6 +5,8 @@ import Logo from '../logo';
 import {SidebarProps, SiderItem} from './type';
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
+import {toast} from 'react-toastify';
+import {setIsLoggedIn} from '../../slice';
 
 const Sidebar: FunctionComponent<SidebarProps> = ({
   setActivePage,
@@ -38,7 +40,11 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   };
 
   const handleLogout = () => {
-    navigate('/auth/login');
+    setIsLoggedIn(false);
+    toast.success('Sign in successful!');
+    setTimeout(() => {
+      navigate('/auth/login');
+    }, 1000);
   };
 
   const toggleIcon = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />;

@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux';
 import Input from '../../ui/input';
 import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
-import {setIsLoggedIn, setRole} from '../../../slice';
+import {setIsLoggedIn} from '../../../slice';
 import {isAuthenticated} from '../../../utils/auth';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -44,19 +44,9 @@ const LoginForm: FunctionComponent = () => {
       });
 
       if (response.ok) {
-        const resData = await response.json();
-
-        localStorage.setItem('id', resData.id);
-        localStorage.setItem('username', resData.username);
-        localStorage.setItem('email', resData.email);
-        localStorage.setItem('isActive', resData.isActive);
-        localStorage.setItem('profileImage', resData.profileImage);
-        localStorage.setItem('plan', resData.plan);
-        localStorage.setItem('role', resData.role);
-        localStorage.setItem('stripeId', resData.stripeId);
+        await response.json();
 
         dispatch(setIsLoggedIn(true));
-        dispatch(setRole(resData.role));
 
         toast.success('Sign in successful!');
         setTimeout(() => {
