@@ -3,7 +3,6 @@ import {AppState} from './type';
 
 const initialState: AppState = {
   isLoggedIn: false,
-  role: '',
 };
 
 export const appSlice = createSlice({
@@ -13,12 +12,9 @@ export const appSlice = createSlice({
     setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
     },
-    setRole: (state, action: PayloadAction<string>) => {
-      state.role = action.payload;
-    },
   },
 });
 
-export const {setIsLoggedIn, setRole} = appSlice.actions;
+export const {setIsLoggedIn} = appSlice.actions;
 
 export default appSlice.reducer;
