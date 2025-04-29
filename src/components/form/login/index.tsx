@@ -8,8 +8,9 @@ import {useDispatch} from 'react-redux';
 import Input from '../../ui/input';
 import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
-import {setIsLoggedIn} from '../../../slice';
+import {setIsLoggedIn, setIsActive} from '../../../slice';
 import {isAuthenticated} from '../../../utils/auth';
+import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -37,25 +38,20 @@ const LoginForm: FunctionComponent = () => {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/auth/signin`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email, password}),
-      });
+      const response = await axios.post(
+        `https://esgroadmap-backend.vercel.app/api/v1/auth/signin`,
+        {email, password},
+        {
+          withCredentials: true, // this is key!
+        }
+      );
+      dispatch(setIsLoggedIn(true));
+      dispatch(setIsActive(response.data.isActive));
 
-      if (response.ok) {
-        await response.json();
-
-        dispatch(setIsLoggedIn(true));
-
-        toast.success('Sign in successful!');
-        setTimeout(() => {
-          navigate('/dashboard');
-        }, 1000);
-      } else {
-        const errorData = await response.json();
-        toast.error(`Sign in failed: ${errorData.error}`);
-      }
+      toast.success('Sign in successful!');
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
     } catch (err) {
       toast.error('An error occurred during sign-in.');
       console.error('Sign-in error:', err);

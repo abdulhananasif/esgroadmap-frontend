@@ -6,7 +6,8 @@ import {SidebarProps, SiderItem} from './type';
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
 import {toast} from 'react-toastify';
-import {setIsLoggedIn} from '../../slice';
+import {setIsActive, setIsLoggedIn} from '../../slice';
+import {useDispatch} from 'react-redux';
 
 const Sidebar: FunctionComponent<SidebarProps> = ({
   setActivePage,
@@ -15,7 +16,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (location.pathname === '/') {
       navigate('/dashboard');
@@ -40,7 +41,8 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    dispatch(setIsLoggedIn(false));
+    dispatch(setIsActive(false));
     toast.success('Sign in successful!');
     setTimeout(() => {
       navigate('/auth/login');

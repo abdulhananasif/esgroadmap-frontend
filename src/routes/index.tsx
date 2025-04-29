@@ -4,6 +4,7 @@ import Checkout from '../pages/checkout';
 import {RouteObject} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import CarbonReduction from '../pages/carbonReduction';
+import ActivateAccount from '../components/activateAccount';
 
 export const routesConfig: RouteObject[] = [
   {
@@ -45,5 +46,9 @@ export const routesConfig: RouteObject[] = [
   {
     path: '/auth/membership-account/membership-checkout',
     element: <Checkout />,
+  },
+  {
+    path: '/auth/activate-account',
+    element: <ActivateAccount />,
   },
 ];
