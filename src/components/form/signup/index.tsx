@@ -52,7 +52,10 @@ const SignUpForm: FunctionComponent = () => {
 
         dispatch(setIsLoggedIn(true));
 
-        toast.success('Sign in successful!');
+        toast.success('Sign in successful! ');
+        toast.info(
+          'Please check your email inbox and click on the activation link we sent you.'
+        );
         setTimeout(() => {
           navigate('/auth/login');
         }, 1000);

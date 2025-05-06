@@ -6,19 +6,25 @@ import {RootState} from './store';
 
 const App = () => {
   const navigate = useNavigate();
-  const {isLoggedIn, isActive} = useSelector((state: RootState) => state.app);
+  const {isLoggedIn} = useSelector((state: RootState) => state.app);
 
   useEffect(() => {
     if (isLoggedIn) {
-      if (!isActive) {
-        navigate('/auth/activate-account');
-      } else {
-        navigate('/dashboard');
-      }
+      navigate('/dashboard');
     } else {
-      navigate('/auth/login');
+      const currentPath = window.location.pathname;
+      const authPaths = [
+        '/auth/login',
+        '/auth/signup',
+        '/auth/activate-account',
+        '/auth/membership-account/membership-checkout',
+      ];
+
+      if (!authPaths.includes(currentPath)) {
+        navigate('/auth/login');
+      }
     }
-  }, [isLoggedIn, isActive, navigate]);
+  }, [isLoggedIn, navigate]);
 
   return <AppRoutes />;
 };
