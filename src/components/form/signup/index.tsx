@@ -8,8 +8,6 @@ import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 // import {PayPalButtons} from '@paypal/react-paypal-js';
 import {useLocation} from 'react-router-dom';
-import {setIsLoggedIn} from '../../../slice';
-import {useDispatch} from 'react-redux';
 import {SignUpFormData, signUpSchema} from '../../../validations/schema/auth';
 import {isAuthenticated} from '../../../utils/auth';
 
@@ -17,7 +15,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const SignUpForm: FunctionComponent = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   // const [enablePayment, setEnablePayment] = useState(false);
   const location = useLocation();
@@ -50,9 +47,10 @@ const SignUpForm: FunctionComponent = () => {
       if (response.ok) {
         await response.json();
 
-        dispatch(setIsLoggedIn(true));
-
-        toast.success('Sign in successful!');
+        toast.success('Sign in successful! ');
+        toast.info(
+          'Please check your email inbox and click on the activation link we sent you.'
+        );
         setTimeout(() => {
           navigate('/auth/login');
         }, 1000);
