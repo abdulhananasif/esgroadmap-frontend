@@ -52,7 +52,10 @@ const OTPVerification: FunctionComponent<OTPVerificationProps> = ({
         label="OTP"
         type="text"
         value={otp}
-        onChange={(e) => setOtp(e.target.value)}
+        onChange={(e) => {
+          const value = e.target.value.replace(/\D/g, '').slice(0, 4);
+          setOtp(value);
+        }}
         placeholder="Enter OTP"
       />
       <Button
