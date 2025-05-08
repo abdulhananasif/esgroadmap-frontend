@@ -33,6 +33,16 @@ const authMessages: AuthMessages = {
       minLength: 'Password must be at least 6 characters',
     },
   },
+  changePassword: {
+    oldPassword: {
+      required: 'Old Password is required',
+      minLength: 'Password must be at least 6 characters',
+    },
+    newPassword: {
+      required: 'New Password is required',
+      minLength: 'Password must be at least 6 characters',
+    },
+  },
 };
 
 export default authMessages;
