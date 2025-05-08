@@ -9,7 +9,6 @@ import {
   ChangePasswordFormData,
   changePasswordSchema,
 } from '../../../validations/schema/auth';
-// import axios from 'axios';
 import api from '../../../middleware';
 
 const ChangePasswordForm: FunctionComponent = () => {
