@@ -31,4 +31,14 @@ export interface AuthMessages {
       minLength: string;
     };
   };
+  changePassword: {
+    oldPassword: {
+      required: string;
+      minLength: string;
+    };
+    newPassword: {
+      required: string;
+      minLength: string;
+    };
+  };
 }

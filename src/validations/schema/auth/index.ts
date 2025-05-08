@@ -32,3 +32,16 @@ export const signUpSchema = z.object({
 });
 
 export type SignUpFormData = z.infer<typeof signUpSchema>;
+
+export const changePasswordSchema = z.object({
+  oldPassword: z
+    .string({required_error: errors.auth.changePassword.oldPassword.required})
+    .min(6, errors.auth.changePassword.oldPassword.minLength),
+  newPassword: z
+    .string({
+      required_error: errors.auth.changePassword.newPassword.required,
+    })
+    .min(6, errors.auth.changePassword.newPassword.minLength),
+});
+
+export type ChangePasswordFormData = z.infer<typeof changePasswordSchema>;

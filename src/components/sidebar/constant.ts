@@ -40,7 +40,7 @@ export const siderItems: SiderItem[] = [
   // },
   {
     id: 6,
-    path: '#',
+    path: '/account',
     label: 'Account',
     icon: '/icons/circle-user',
   },
