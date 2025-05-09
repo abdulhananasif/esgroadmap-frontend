@@ -8,8 +8,6 @@ import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 // import {PayPalButtons} from '@paypal/react-paypal-js';
 import {useLocation} from 'react-router-dom';
-import {setIsLoggedIn, setRole} from '../../../slice';
-import {useDispatch} from 'react-redux';
 import {SignUpFormData, signUpSchema} from '../../../validations/schema/auth';
 import {isAuthenticated} from '../../../utils/auth';
 
@@ -17,7 +15,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const SignUpForm: FunctionComponent = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   // const [enablePayment, setEnablePayment] = useState(false);
   const location = useLocation();
@@ -48,21 +45,12 @@ const SignUpForm: FunctionComponent = () => {
       });
 
       if (response.ok) {
-        const resData = await response.json();
+        await response.json();
 
-        localStorage.setItem('id', resData.id);
-        localStorage.setItem('username', resData.username);
-        localStorage.setItem('email', resData.email);
-        localStorage.setItem('isActive', resData.isActive);
-        localStorage.setItem('profileImage', resData.profileImage);
-        localStorage.setItem('plan', resData.plan);
-        localStorage.setItem('role', resData.role);
-        localStorage.setItem('stripeId', resData.stripeId);
-
-        dispatch(setIsLoggedIn(true));
-        dispatch(setRole(resData.role));
-
-        toast.success('Sign in successful!');
+        toast.success('Sign in successful! ');
+        toast.info(
+          'Please check your email inbox and click on the activation link we sent you.'
+        );
         setTimeout(() => {
           navigate('/auth/login');
         }, 1000);

@@ -1,4 +1,4 @@
 export interface AppState {
   isLoggedIn: boolean;
-  role: string;
+  isActive: boolean;
 }

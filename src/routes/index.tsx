@@ -5,6 +5,8 @@ import {RouteObject} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import CarbonReduction from '../pages/carbonReduction';
 import SupportTicket from '../pages/supportTicket';
+import ActivateAccount from '../components/activateAccount';
+import Account from '../pages/account';
 
 export const routesConfig: RouteObject[] = [
   {
@@ -15,6 +17,26 @@ export const routesConfig: RouteObject[] = [
     path: '/carbon-reduction',
     element: <CarbonReduction />,
   },
+  // {
+  //   path: '/waste-and-recycling',
+  //   element: <WasteAndRecycling />,
+  // },
+  // {
+  //   path: '/water-management',
+  //   element: <WaterManagement />,
+  // },
+  // {
+  //   path: '/gender-diversity',
+  //   element: <GenderDiversity />,
+  // },
+  // {
+  //   path: '/supply-chain',
+  //   element: <SupplyChain />,
+  // },
+  // {
+  //   path: '/renewables',
+  //   element: <Renewables />,
+  // },
   {
     path: '/auth/login',
     element: <Login />,
@@ -30,5 +52,13 @@ export const routesConfig: RouteObject[] = [
   {
     path: '/support-tickets',
     element: <SupportTicket />,
+  },
+  {
+    path: '/auth/activate-account',
+    element: <ActivateAccount />,
+  },
+  {
+    path: '/account',
+    element: <Account />,
   },
 ];

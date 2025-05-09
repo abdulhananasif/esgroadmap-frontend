@@ -2,9 +2,12 @@ import {FunctionComponent, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {siderItems} from './constant';
 import Logo from '../logo';
-import {SidebarProps} from './type';
+import {SidebarProps, SiderItem} from './type';
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
+import {toast} from 'react-toastify';
+import {setIsActive, setIsLoggedIn} from '../../slice';
+import {useDispatch} from 'react-redux';
 
 const Sidebar: FunctionComponent<SidebarProps> = ({
   setActivePage,
@@ -13,7 +16,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (location.pathname === '/') {
       navigate('/dashboard');
@@ -38,7 +41,12 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   };
 
   const handleLogout = () => {
-    navigate('/auth/login');
+    dispatch(setIsLoggedIn(false));
+    dispatch(setIsActive(false));
+    toast.success('Sign in successful!');
+    setTimeout(() => {
+      navigate('/auth/login');
+    }, 1000);
   };
 
   const toggleIcon = collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />;
@@ -74,7 +82,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
       </div>
 
       <div className="text-start text-lg md:text-base">
-        {siderItems.map(({path, label, icon}) => {
+        {siderItems.map(({path, label, icon}: SiderItem) => {
           const isActive = location.pathname === path;
           const itemClass = `flex items-center cursor-pointer transition-all duration-300 ${
             collapsed ? 'justify-center px-0 py-2.5' : 'px-7 py-3 justify-start'
@@ -82,7 +90,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
 
           return (
             <div
-              key={path}
+              key={label}
               className={itemClass}
               onClick={() => navigate(path)}
             >

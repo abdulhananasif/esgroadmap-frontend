@@ -1,4 +1,4 @@
-import {TableRowType} from './type';
+import {TableRowType} from '../../types/table';
 
 export const rowData: TableRowType[] = Array.from({length: 40}, (_, i) => ({
   id: 516934 + i,
