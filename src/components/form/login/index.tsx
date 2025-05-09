@@ -10,6 +10,7 @@ import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
 import {setIsLoggedIn, setIsActive} from '../../../slice';
 import {isAuthenticated} from '../../../utils/auth';
 import axios from 'axios';
+
 import Modal from '../../modal';
 import EmailRequest from '../../emailRequest';
 import OTPVerification from '../../otpVerification';
