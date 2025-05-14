@@ -29,7 +29,6 @@ const App = () => {
       }
     }
   }, [isLoggedIn, isActive, navigate]);
-
   return (
     <>
       <AppRoutes />
