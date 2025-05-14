@@ -4,7 +4,9 @@ import Checkout from '../pages/checkout';
 import {RouteObject} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import CarbonReduction from '../pages/carbonReduction';
+import SupportTicket from '../pages/supportTicket';
 import ActivateAccount from '../components/activateAccount';
+import Account from '../pages/account';
 
 export const routesConfig: RouteObject[] = [
   {
@@ -48,7 +50,15 @@ export const routesConfig: RouteObject[] = [
     element: <Checkout />,
   },
   {
+    path: '/support-tickets',
+    element: <SupportTicket />,
+  },
+  {
     path: '/auth/activate-account',
     element: <ActivateAccount />,
+  },
+  {
+    path: '/account',
+    element: <Account />,
   },
 ];

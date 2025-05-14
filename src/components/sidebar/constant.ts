@@ -40,13 +40,13 @@ export const siderItems: SiderItem[] = [
   // },
   {
     id: 6,
-    path: '#',
+    path: '/account',
     label: 'Account',
     icon: '/icons/circle-user',
   },
   {
     id: 7,
-    path: '#',
+    path: '/support-tickets',
     label: 'Support Tickets',
     icon: '/icons/head-phones',
   },
