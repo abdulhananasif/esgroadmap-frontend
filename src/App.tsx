@@ -33,7 +33,6 @@ const App = () => {
   return (
     <>
       <AppRoutes />
-
       <Modal isOpen={showModal} closeable={false}>
         <h2 className="text-xl font-semibold mb-4">Account Not Activated</h2>
         <p className="text-gray-700 mb-4">
