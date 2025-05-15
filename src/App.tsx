@@ -11,24 +11,25 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    const currentPath = window.location.pathname;
+    const authPaths = [
+      '/auth/login',
+      '/auth/signup',
+      '/auth/membership-account/membership-checkout',
+    ];
+
     if (isLoggedIn) {
-      navigate('/dashboard');
-      if (!isActive) {
+      if (!isActive && currentPath !== '/auth/activate-account') {
         setShowModal(true);
+        navigate('/auth/activate-account');
       }
     } else {
-      const currentPath = window.location.pathname;
-      const authPaths = [
-        '/auth/login',
-        '/auth/signup',
-        '/auth/activate-account',
-        '/auth/membership-account/membership-checkout',
-      ];
       if (!authPaths.includes(currentPath)) {
         navigate('/auth/login');
       }
     }
   }, [isLoggedIn, isActive, navigate]);
+
   return (
     <>
       <AppRoutes />
