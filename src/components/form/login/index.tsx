@@ -1,7 +1,7 @@
 import {FunctionComponent, useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify';
 import {useDispatch} from 'react-redux';
 import Input from '../../ui/input';
@@ -10,7 +10,6 @@ import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
 import {setIsLoggedIn, setIsActive} from '../../../slice';
 import {isAuthenticated} from '../../../utils/auth';
 import axios from 'axios';
-
 import Modal from '../../modal';
 import EmailRequest from '../../emailRequest';
 import OTPVerification from '../../otpVerification';
@@ -18,10 +17,12 @@ import SetNewPassword from '../../setNewPassword';
 
 const LoginForm: FunctionComponent = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState('');
+  const fromActivateAccount = location.pathname === '/auth/activate-account';
 
   const openModal = () => setStep(1);
   const closeModal = () => {
@@ -59,7 +60,11 @@ const LoginForm: FunctionComponent = () => {
 
       toast.success('Sign in successful!');
       setTimeout(() => {
-        navigate('/dashboard');
+        if (fromActivateAccount) {
+          navigate('/auth/activate-account');
+        } else {
+          navigate('/dashboard');
+        }
       }, 1000);
     } catch (err) {
       toast.error('An error occurred during sign-in.');
@@ -68,9 +73,14 @@ const LoginForm: FunctionComponent = () => {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     if (isAuthenticated()) {
-      navigate('/dashboard');
+      if (fromActivateAccount) {
+        navigate('/auth/activate-account');
+      } else {
+        navigate('/dashboard');
+      }
     }
   }, []);
   return (
