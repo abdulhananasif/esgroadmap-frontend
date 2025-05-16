@@ -7,6 +7,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {PayPalScriptProvider} from '@paypal/react-paypal-js';
 import {Provider} from 'react-redux';
 import {store} from './store/index.ts';
+import {PreviousLocationProvider} from './pages/previousLocation/index.tsx';
 
 const initialOptions = {
   clientId:
@@ -19,13 +20,15 @@ const initialOptions = {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider>
-        <PayPalScriptProvider options={initialOptions}>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </PayPalScriptProvider>
-      </ThemeProvider>
+      <PreviousLocationProvider>
+        <ThemeProvider>
+          <PayPalScriptProvider options={initialOptions}>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </PayPalScriptProvider>
+        </ThemeProvider>
+      </PreviousLocationProvider>
     </BrowserRouter>
   </StrictMode>
 );

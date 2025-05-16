@@ -1,7 +1,7 @@
 import {FunctionComponent, useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify';
 import {useDispatch} from 'react-redux';
 import Input from '../../ui/input';
@@ -14,15 +14,16 @@ import Modal from '../../modal';
 import EmailRequest from '../../emailRequest';
 import OTPVerification from '../../otpVerification';
 import SetNewPassword from '../../setNewPassword';
+import {usePreviousLocation} from '../../../pages/previousLocation';
 
 const LoginForm: FunctionComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState('');
-  const fromActivateAccount = location.pathname === '/auth/activate-account';
+  const previousLocation = usePreviousLocation();
+  const fromActivateAccount = previousLocation === '/auth/activate-account';
   const isLoggedIn = useSelector((state: any) => state.isLoggedIn);
 
   const openModal = () => setStep(1);
