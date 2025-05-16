@@ -28,7 +28,7 @@ const App = () => {
     }
 
     if (isLoggedIn) {
-      if (!isActive && currentPath !== '/auth/activate-account') {
+      if (!isActive) {
         setShowModal(true);
       } else {
         setShowModal(false);
@@ -38,6 +38,12 @@ const App = () => {
         setShowModal(false);
         navigate('/auth/login', {replace: true});
       }
+    }
+    if (currentPath === '/auth/activate-account' && isActive) {
+      navigate('/dashboard');
+    }
+    if (currentPath === '/auth/activate-account') {
+      setShowModal(false);
     }
   }, [isLoggedIn, isActive, navigate]);
 

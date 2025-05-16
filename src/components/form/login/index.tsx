@@ -8,7 +8,7 @@ import Input from '../../ui/input';
 import Button from '../../ui/button';
 import {LoginFormData, loginSchema} from '../../../validations/schema/auth';
 import {setIsLoggedIn, setIsActive} from '../../../slice';
-import {isAuthenticated} from '../../../utils/auth';
+import {useSelector} from 'react-redux';
 import axios from 'axios';
 import Modal from '../../modal';
 import EmailRequest from '../../emailRequest';
@@ -23,6 +23,7 @@ const LoginForm: FunctionComponent = () => {
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState('');
   const fromActivateAccount = location.pathname === '/auth/activate-account';
+  const isLoggedIn = useSelector((state: any) => state.isLoggedIn);
 
   const openModal = () => setStep(1);
   const closeModal = () => {
@@ -57,7 +58,6 @@ const LoginForm: FunctionComponent = () => {
       );
       dispatch(setIsLoggedIn(true));
       dispatch(setIsActive(response.data.isActive));
-
       toast.success('Sign in successful!');
       setTimeout(() => {
         if (fromActivateAccount) {
@@ -75,7 +75,7 @@ const LoginForm: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated()) {
+    if (isLoggedIn) {
       if (fromActivateAccount) {
         navigate('/auth/activate-account');
       } else {

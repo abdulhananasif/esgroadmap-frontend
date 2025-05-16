@@ -8,7 +8,7 @@ import api from '../../middleware';
 const ActivateAccount = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {isLoggedIn} = useSelector((state: RootState) => state.app);
+  const {isLoggedIn, isActive} = useSelector((state: RootState) => state.app);
   const [activating, setActivating] = useState(true);
 
   const activate = async () => {
@@ -29,7 +29,9 @@ const ActivateAccount = () => {
     if (!isLoggedIn) {
       navigate('/auth/login');
     } else {
-      activate();
+      if (!isActive) {
+        activate();
+      }
     }
   }, [isLoggedIn]);
 
