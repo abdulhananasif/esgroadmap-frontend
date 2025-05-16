@@ -27,7 +27,7 @@ const ActivateAccount = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate('/dashboard');
+      navigate('/auth/login');
     } else {
       activate();
     }

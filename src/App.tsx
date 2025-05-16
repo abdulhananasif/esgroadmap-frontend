@@ -23,10 +23,6 @@ const App = () => {
         navigate('/auth/login', {replace: true});
         return;
       }
-      if (!isActive) {
-        navigate('/auth/activate-account', {replace: true});
-        return;
-      }
       navigate('/dashboard', {replace: true});
       return;
     }
@@ -34,7 +30,6 @@ const App = () => {
     if (isLoggedIn) {
       if (!isActive && currentPath !== '/auth/activate-account') {
         setShowModal(true);
-        navigate('/auth/activate-account', {replace: true});
       } else {
         setShowModal(false);
       }

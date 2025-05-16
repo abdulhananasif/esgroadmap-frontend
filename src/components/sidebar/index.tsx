@@ -43,7 +43,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
   const handleLogout = () => {
     dispatch(setIsLoggedIn(false));
     dispatch(setIsActive(false));
-    toast.success('Sign in successful!');
+    toast.success('Logout successful!');
     setTimeout(() => {
       navigate('/auth/login');
     }, 1000);
