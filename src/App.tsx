@@ -18,14 +18,30 @@ const App = () => {
       '/auth/membership-account/membership-checkout',
     ];
 
+    if (currentPath === '/') {
+      if (!isLoggedIn) {
+        navigate('/auth/login', {replace: true});
+        return;
+      }
+      if (!isActive) {
+        navigate('/auth/activate-account', {replace: true});
+        return;
+      }
+      navigate('/dashboard', {replace: true});
+      return;
+    }
+
     if (isLoggedIn) {
       if (!isActive && currentPath !== '/auth/activate-account') {
         setShowModal(true);
-        navigate('/auth/activate-account');
+        navigate('/auth/activate-account', {replace: true});
+      } else {
+        setShowModal(false);
       }
     } else {
       if (!authPaths.includes(currentPath)) {
-        navigate('/auth/login');
+        setShowModal(false);
+        navigate('/auth/login', {replace: true});
       }
     }
   }, [isLoggedIn, isActive, navigate]);
